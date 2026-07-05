@@ -1,0 +1,88 @@
+‎<!DOCTYPE html>
+‎<html lang="en">
+‎<head>
+‎<meta charset="UTF-8">
+‎<meta name="viewport" content="width=device-width, initial-scale=1.0">
+‎
+‎<title>Admin Dashboard | Sunny Ji Ansari</title>
+‎
+‎<link rel="stylesheet" href="css/dashboard.css">
+‎</head>
+‎
+‎<body>
+‎
+‎<header class="header">
+‎    <h1>Sunny Ji Ansari Real Estate</h1>
+‎
+‎    <button id="logoutBtn">Logout</button>
+‎</header>
+‎
+‎<div class="container">
+‎
+‎    <aside class="sidebar">
+‎
+‎        <h2>Admin Panel</h2>
+‎
+‎        <ul>
+‎            <li><a href="dashboard.html">🏠 Dashboard</a></li>
+‎            <li><a href="add-plot.html">➕ Add Plot</a></li>
+‎            <li><a href="manage-plots.html">📋 Manage Plots</a></li>
+‎            <li><a href="gallery.html">🖼 Gallery</a></li>
+‎            <li><a href="contact.html">📩 Customer Inquiries</a></li>
+‎            <li><a href="#" id="logoutLink">🚪 Logout</a></li>
+‎        </ul>
+‎
+‎    </aside>
+‎
+‎    <main class="content">
+‎
+‎        <h2>Welcome Admin</h2>
+‎
+‎        <div class="cards">
+‎
+‎            <div class="card">
+‎                <h3>Total Plots</h3>
+‎                <p id="totalPlots">0</p>
+‎            </div>
+‎
+‎            <div class="card">
+‎                <h3>Available Plots</h3>
+‎                <p id="availablePlots">0</p>
+‎            </div>
+‎
+‎            <div class="card">
+‎                <h3>Sold Plots</h3>
+‎                <p id="soldPlots">0</p>
+‎            </div>
+‎
+‎            <div class="card">
+‎                <h3>Customer Inquiries</h3>
+‎                <p id="inquiries">0</p>
+‎            </div>
+‎
+‎        </div>
+‎
+‎        <h3>Recent Activity</h3>
+‎
+‎        <table border="1" width="100%" cellpadding="10">
+‎
+‎            <tr>
+‎                <th>Date</th>
+‎                <th>Activity</th>
+‎            </tr>
+‎
+‎            <tr>
+‎                <td>--</td>
+‎                <td>No Activity Yet</td>
+‎            </tr>
+‎
+‎        </table>
+‎
+‎    </main>
+‎
+‎</div>
+‎
+‎<script type="module" src="js/dashboard.js"></script>
+‎
+‎</body>
+‎</html>
