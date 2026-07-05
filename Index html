@@ -1,0 +1,112 @@
+‎<!DOCTYPE html>
+‎<html lang="en">
+‎<head>
+‎    <meta charset="UTF-8">
+‎    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+‎    <title>Sunny Ji Ansari | Real Estate Consultant</title>
+‎
+‎    <link rel="stylesheet" href="style.css">
+‎</head>
+‎
+‎<body>
+‎
+‎<header>
+‎    <h1>Sunny Ji Ansari</h1>
+‎    <p>Real Estate Consultant</p>
+‎
+‎    <nav>
+‎        <a href="index.html">Home</a>
+‎        <a href="about.html">About</a>
+‎        <a href="projects.html">Projects</a>
+‎        <a href="gallery.html">Gallery</a>
+‎        <a href="contact.html">Contact</a>
+‎    </nav>
+‎</header>
+‎
+‎<section class="hero">
+‎
+‎<h2>Find Your Dream Plot & Home</h2>
+‎
+‎<p>Buy, Sell & Invest in Premium Properties.</p>
+‎
+‎<a href="projects.html">
+‎<button>View Projects</button>
+‎</a>
+‎
+‎</section>
+‎
+‎<section>
+‎
+‎<h2>Our Services</h2>
+‎
+‎<ul>
+‎
+‎<li>Residential Plots</li>
+‎
+‎<li>Commercial Plots</li>
+‎
+‎<li>Houses for Sale</li>
+‎
+‎<li>Property Investment</li>
+‎
+‎<li>Documentation Support</li>
+‎
+‎</ul>
+‎
+‎</section>
+‎
+‎<section>
+‎
+‎<h2>Why Choose Sunny Ji Ansari?</h2>
+‎
+‎<p>
+‎
+‎✔ Trusted Property Consultant
+‎
+‎<br><br>
+‎
+‎✔ Genuine Property Deals
+‎
+‎<br><br>
+‎
+‎✔ Easy Installment Plans
+‎
+‎<br><br>
+‎
+‎✔ Customer Satisfaction
+‎
+‎</p>
+‎
+‎</section>
+‎
+‎<section>
+‎
+‎<h2>Contact Us</h2>
+‎
+‎<p>📞 +92 3363144097</p>
+‎
+‎<p>📧 sunnyjiansari456@gmail.com</p>
+‎
+‎<p>📍 Dabeji Market, Al-Sadaat Town</p>
+‎
+‎</section>
+‎
+‎<footer>
+‎
+‎<p>
+‎
+‎© 2026 Sunny Ji Ansari | All Rights Reserved
+‎
+‎</p>
+‎
+‎</footer>
+‎
+‎<script src="script.js"></script>
+‎
+‎</body>
+‎</html>
+‎<a href="https://wa.me/923363144097?text=Assalam-o-Alaikum%20Sunny%20Ji%20Ansari,%20mujhe%20plot%20ke%20baare%20mein%20maloomat%20chahiye." target="_blank">
+‎    <button style="background:#25D366; margin-top:10px;">
+‎        Chat on WhatsApp
+‎    </button>
+‎</a>
