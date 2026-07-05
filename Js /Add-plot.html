@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+‎<html lang="en">
+‎<head>
+‎<meta charset="UTF-8">
+‎<meta name="viewport" content="width=device-width, initial-scale=1.0">
+‎
+‎<title>Add Plot | Sunny Ji Ansari</title>
+‎
+‎<link rel="stylesheet" href="css/dashboard.css">
+‎</head>
+‎
+‎<body>
+‎
+‎<header class="header">
+‎<h1>Sunny Ji Ansari Real Estate</h1>
+‎
+‎<a href="dashboard.html">
+‎<button>Dashboard</button>
+‎</a>
+‎
+‎</header>
+‎
+‎<div class="content">
+‎
+‎<h2>Add New Plot</h2>
+‎
+‎<form id="plotForm">
+‎
+‎<label>Plot Title</label>
+‎<input type="text" id="title" required>
+‎
+‎<br><br>
+‎
+‎<label>Location</label>
+‎<input type="text" id="location" required>
+‎
+‎<br><br>
+‎
+‎<label>Plot Size</label>
+‎<input type="text" id="size" placeholder="120 Sq. Yards" required>
+‎
+‎<br><br>
+‎
+‎<label>Price</label>
+‎<input type="text" id="price" required>
+‎
+‎<br><br>
+‎
+‎<label>Status</label>
+‎
+‎<select id="status">
+‎<option>Available</option>
+‎<option>Sold</option>
+‎<option>Booked</option>
+‎</select>
+‎
+‎<br><br>
+‎
+‎<label>Description</label>
+‎
+‎<textarea
+‎id="description"
+‎rows="5"
+‎required>
+‎</textarea>
+‎
+‎<br><br>
+‎
+‎<label>Upload Image</label>
+‎
+‎<input
+‎type="file"
+‎id="image"
+‎accept="image/*">
+‎
+‎<br><br>
+‎
+‎<button type="submit">
+‎Save Plot
+‎</button>
+‎
+‎</form>
+‎
+‎</div>
+‎
+‎<script type="module" src="js/add-plot.js"></script>
+‎
+‎</body>
+‎</html>
