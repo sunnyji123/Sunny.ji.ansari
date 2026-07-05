@@ -1,0 +1,80 @@
+‎/* ==========================
+‎   Sunny Ji Ansari Login Page
+‎========================== */
+‎
+‎*{
+‎    margin:0;
+‎    padding:0;
+‎    box-sizing:border-box;
+‎    font-family:Arial, sans-serif;
+‎}
+‎
+‎body{
+‎    background:linear-gradient(135deg,#0b3d91,#1e88e5);
+‎    height:100vh;
+‎    display:flex;
+‎    justify-content:center;
+‎    align-items:center;
+‎}
+‎
+‎.login-box{
+‎    width:380px;
+‎    background:#fff;
+‎    padding:30px;
+‎    border-radius:10px;
+‎    box-shadow:0 10px 25px rgba(0,0,0,.3);
+‎    text-align:center;
+‎}
+‎
+‎.login-box h1{
+‎    color:#0b3d91;
+‎    margin-bottom:10px;
+‎}
+‎
+‎.login-box h2{
+‎    margin-bottom:25px;
+‎    color:#333;
+‎}
+‎
+‎.login-box input{
+‎    width:100%;
+‎    padding:12px;
+‎    margin:10px 0;
+‎    border:1px solid #ccc;
+‎    border-radius:5px;
+‎    font-size:16px;
+‎}
+‎
+‎.login-box input:focus{
+‎    border-color:#0b3d91;
+‎    outline:none;
+‎}
+‎
+‎.login-box button{
+‎    width:100%;
+‎    padding:12px;
+‎    background:#0b3d91;
+‎    color:white;
+‎    border:none;
+‎    border-radius:5px;
+‎    font-size:17px;
+‎    cursor:pointer;
+‎}
+‎
+‎.login-box button:hover{
+‎    background:#1565c0;
+‎}
+‎
+‎#message{
+‎    margin-top:15px;
+‎    color:red;
+‎    font-weight:bold;
+‎}
+‎
+‎@media(max-width:480px){
+‎
+‎.login-box{
+‎    width:90%;
+‎}
+‎
+‎}
