@@ -1,0 +1,133 @@
+/* ===========================
+‎   Sunny Ji Ansari Dashboard
+‎=========================== */
+‎
+‎*{
+‎    margin:0;
+‎    padding:0;
+‎    box-sizing:border-box;
+‎    font-family:Arial, sans-serif;
+‎}
+‎
+‎body{
+‎    background:#f4f6f9;
+‎}
+‎
+‎.header{
+‎    background:#0b3d91;
+‎    color:#fff;
+‎    padding:15px 20px;
+‎    display:flex;
+‎    justify-content:space-between;
+‎    align-items:center;
+‎}
+‎
+‎.header button{
+‎    background:#ff9800;
+‎    color:#fff;
+‎    border:none;
+‎    padding:10px 15px;
+‎    border-radius:5px;
+‎    cursor:pointer;
+‎}
+‎
+‎.container{
+‎    display:flex;
+‎    min-height:100vh;
+‎}
+‎
+‎.sidebar{
+‎    width:250px;
+‎    background:#1e3a5f;
+‎    color:#fff;
+‎    padding:20px;
+‎}
+‎
+‎.sidebar h2{
+‎    margin-bottom:20px;
+‎}
+‎
+‎.sidebar ul{
+‎    list-style:none;
+‎}
+‎
+‎.sidebar ul li{
+‎    margin:15px 0;
+‎}
+‎
+‎.sidebar ul li a{
+‎    color:#fff;
+‎    text-decoration:none;
+‎    display:block;
+‎    padding:10px;
+‎    border-radius:5px;
+‎}
+‎
+‎.sidebar ul li a:hover{
+‎    background:#0b3d91;
+‎}
+‎
+‎.content{
+‎    flex:1;
+‎    padding:20px;
+‎}
+‎
+‎.cards{
+‎    display:grid;
+‎    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+‎    gap:20px;
+‎    margin:20px 0;
+‎}
+‎
+‎.card{
+‎    background:#fff;
+‎    padding:20px;
+‎    border-radius:10px;
+‎    box-shadow:0 3px 10px rgba(0,0,0,.1);
+‎    text-align:center;
+‎}
+‎
+‎.card h3{
+‎    color:#0b3d91;
+‎    margin-bottom:10px;
+‎}
+‎
+‎.card p{
+‎    font-size:28px;
+‎    font-weight:bold;
+‎}
+‎
+‎table{
+‎    width:100%;
+‎    border-collapse:collapse;
+‎    background:#fff;
+‎}
+‎
+‎table th{
+‎    background:#0b3d91;
+‎    color:#fff;
+‎}
+‎
+‎table th,
+‎table td{
+‎    border:1px solid #ddd;
+‎    padding:12px;
+‎    text-align:left;
+‎}
+‎
+‎@media(max-width:768px){
+‎
+‎.container{
+‎    flex-direction:column;
+‎}
+‎
+‎.sidebar{
+‎    width:100%;
+‎}
+‎
+‎.header{
+‎    flex-direction:column;
+‎    gap:10px;
+‎}
+‎
+‎}
