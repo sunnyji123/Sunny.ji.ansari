@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Direct File Upload</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #f4f4f9;
+        }
+        .upload-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+            display: inline-block;
+        }
+        input[type="file"] {
+            margin: 20px 0;
+            display: block;
+            width: 100%;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="upload-box">
+        <h2>Apni File Upload Karein</h2>
+        
+        <!-- File chunne ke liye -->
+        <input type="file" id="myfile" />
+        
+        <!-- Direct upload ka button -->
+        <button id="uploadBtn">Upload Karein</button>
+    </div>
+
+    <!-- Firebase Script Start -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics.js";
+      import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-storage.js";
+
+      // Aapka Firebase Configuration (Pehle se set kiya hua)
+      const firebaseConfig = {
+        apiKey: "AIzaSyADC693uEi9PKJqiTcyyZ8eJHa9b26xp1I",
+        authDomain: "sunnyji123-f3c0d.firebaseapp.com",
+        projectId: "sunnyji123-f3c0d",
+        storageBucket: "sunnyji123-f3c0d.firebasestorage.app",
+        messagingSenderId: "719753127340",
+        appId: "1:719753127340:web:29978e55e80ec4b5858609",
+        measurementId: "G-48099EJ7MB"
+      };
+
+      // Firebase Initialize
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      const storage = getStorage(app);
+
+      // Upload Handle karne ka tareeka
+      const fileInput = document.getElementById("myfile");
+      const uploadButton = document.getElementById("uploadBtn");
+
+      uploadButton.addEventListener("click", () => {
+          const file = fileInput.files[0];
+          if (!file) {
+              alert("Kripya pehle koi file select karein!");
+              return;
+          }
+
+          // File kis folder me jayegi
+          const storageRef = ref(storage, 'website_files/' + file.name);
+
+          alert("File upload ho rahi hai, kripya thoda intezar karein...");
+
+          uploadBytes(storageRef, file).then((snapshot) => {
+              getDownloadURL(snapshot.ref).then((downloadURL) => {
+                  alert("Mubarak ho! File kamyabi se upload ho gayi.");
+                  console.log("File Link: ", downloadURL);
+              });
+          }).catch((error) => {
+              console.error("Error: ", error);
+              alert("Upload nahi ho paya. Firebase Console me Storage ke Rules check karein.");
+          });
+      });
+    </script>
+
+</body>
+</html>
