@@ -102,7 +102,27 @@
 ‎</footer>
 ‎
 ‎<script src="script.js"></script>
-‎
+‎// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyADC693uEi9PKJqiTcyyZ8eJHa9b26xp1I",
+  authDomain: "sunnyji123-f3c0d.firebaseapp.com",
+  projectId: "sunnyji123-f3c0d",
+  storageBucket: "sunnyji123-f3c0d.firebasestorage.app",
+  messagingSenderId: "719753127340",
+  appId: "1:719753127340:web:29978e55e80ec4b5858609",
+  measurementId: "G-48099EJ7MB"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 ‎</body>
 ‎</html>
 ‎<a href="https://wa.me/923363144097?text=Assalam-o-Alaikum%20Sunny%20Ji%20Ansari,%20mujhe%20plot%20ke%20baare%20mein%20maloomat%20chahiye." target="_blank">
