@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJ Real Estate & Builder - Control Panel</title>
+    <style>
+        /* Premium Black & Gold Theme Styling */
+        :root {
+            --bg-color: #0b0b0b;
+            --card-bg: #141414;
+            --gold: #d4af37;
+            --gold-hover: #f3cf65;
+            --text-color: #ffffff;
+            --text-muted: #aaaaaa;
+            --border-color: #2a2a2a;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 550px;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+            border: 1px solid var(--border-color);
+            box-sizing: border-box;
+        }
+
+        h2 {
+            color: var(--gold);
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 30px;
+            font-size: 24px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        input[type="text"], 
+        input[type="email"], 
+        input[type="password"], 
+        input[type="number"], 
+        textarea {
+            width: 100%;
+            padding: 12px;
+            background: #1c1c1c;
+            border: 1px solid var(--border-color);
+            color: #fff;
+            border-radius: 6px;
+            box-sizing: border-box;
+            transition: border 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            background: #1c1c1c;
+            border: 1px dashed var(--gold);
+            color: var(--text-muted);
+            border-radius: 6px;
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+
+        .btn {
+            background: var(--gold);
+            color: #000;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+            transition: background 0.3s ease, transform 0.1s ease;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background: var(--gold-hover);
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: var(--border-color);
+            margin: 30px 0;
+        }
+
+        .logout-btn {
+            background: transparent;
+            color: #ff4d4d;
+            border: 1px solid #ff4d4d;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+            font-size: 12px;
+        }
+
+        .logout-btn:hover {
+            background: #ff4d4d;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <div id="login-section">
+        <h2>Admin Login</h2>
+        <div class="form-group">
+            <label>Admin Email</label>
+            <input type="email" id="admin-email" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="admin-password" placeholder="Enter secure password" required>
+        </div>
+        <button class="btn" onclick="handleLogin()">Access Dashboard</button>
+    </div>
+
+    <div id="dashboard-section" class="hidden">
+        <button class="logout-btn" onclick="handleLogout()">Logout</button>
+        <h2>Control Panel</h2>
+        <p style="color: var(--text-muted); font-size: 14px; text-align: center; margin-bottom: 25px;">
+            Welcome back, Sunny Ji! Manage your website content below.
+        </p>
+        
+        <hr>
+
+        <form id="upload-form">
+            <div class="form-group">
+                <label>Plot Title / Sector (e.g., Dhabeji Market, Phase 1)</label>
+                <input type="text" id="plot-title" placeholder="e.g., 120 Sq Yards Commercial Plot" required>
+            </div>
+
+            <div class="form-group">
+                <label>Price (PKR)</label>
+                <input type="number" id="plot-price" placeholder="e.g., 1500000" required>
+            </div>
+
+            <div class="form-group">
+                <label>Property Details / Description</label>
+                <textarea id="plot-desc" rows="4" placeholder="Mention plot number, features, boundary wall status etc..." required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Select Pictures or Videos (Multiple allowed)</label>
+                <input type="file" id="plot-media" accept="image/*,video/*" multiple required>
+            </div>
+
+            <button type="submit" class="btn">Upload to Website</button>
+        </form>
+    </div>
+
+</div>
+
+<script>
+    // Logic for Login Check
+    function handleLogin() {
+        const email = document.getElementById('admin-email').value;
+        const pass = document.getElementById('admin-password').value;
+
+        // Aap testing ke liye abhi is email aur password ko use kar sakte hain
+        if(email === "admin@sunnyji.com" && pass === "SunnyJi@2026") {
+            // LocalStorage mein save kar rahe hain taaki page refresh par login na maange
+            localStorage.setItem("isAdminAuthenticated", "true");
+            showDashboard();
+        } else {
+            alert("Ghalt Password ya Email! Dubara koshish karein.");
+        }
+    }
+
+    // Check login state on page load
+    window.onload = function() {
+        if(localStorage.getItem("isAdminAuthenticated") === "true") {
+            showDashboard();
+        }
+    }
+
+    function showDashboard() {
+        document.getElementById('login-section').classList.add('hidden');
+        document.getElementById('dashboard-section').classList.remove('hidden');
+    }
+
+    function handleLogout() {
+        localStorage.removeItem("isAdminAuthenticated");
+        document.getElementById('login-section').classList.remove('hidden');
+        document.getElementById('dashboard-section').classList.add('hidden');
+    }
+
+    // Form submission process
+    document.getElementById('upload-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const title = document.getElementById('plot-title').value;
+        const price = document.getElementById('plot-price').value;
+        const desc = document.getElementById('plot-desc').value;
+        const mediaFiles = document.getElementById('plot-media').files;
+
+        console.log("Uploading Data:", { title, price, desc, filesCount: mediaFiles.length });
+
+        // Note: Jab Vercel Blob ya Firebase connect hoga, toh uski API call yahan aayegi.
+        alert("Shabaash! Data successfully upload ho gaya (Console mein details check karein).");
+        
+        // Reset form after upload
+        document.getElementById('upload-form').reset();
+    });
+</script>
+
+</body>
+</html>
