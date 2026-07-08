@@ -1,0 +1,57 @@
+import React, { useState } from 'react';
+
+export default function FileUploadComponent() {
+  const [uploadedFiles, setUploadedFiles] = useState([]);
+
+  const handleFileUpload = (event) => {
+    const files = event.target.files;
+    const fileArray = Array.from(files).map(file => {
+      return {
+        name: file.name,
+        // Local preview URL generate karega jo har browser aur deployment par chalega
+        url: URL.createObjectURL(file), 
+        type: file.type
+      };
+    });
+
+    // Purani files ke sath nayi files ko jor dena
+    setUploadedFiles((prevFiles) => [...prevFiles, ...fileArray]);
+  };
+
+  return (
+    <div style={{ padding: '20px', backgroundColor: '#0d1117', color: '#fff' }}>
+      <h3 style={{ color: '#d4af37' }}>Upload Property Documents / Images</h3>
+      
+      {/* File Input */}
+      <input 
+        type="file" 
+        multiple 
+        onChange={handleFileUpload} 
+        style={{ margin: '15px 0', color: '#fff' }}
+      />
+
+      {/* Uploaded Files Preview Section */}
+      <div style={{ marginTop: '20px' }}>
+        <h4 style={{ color: '#d4af37' }}>Uploaded Files Preview:</h4>
+        {uploadedFiles.length === 0 ? (
+          <p>No files uploaded yet.</p>
+        ) : (
+          <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
+            {uploadedFiles.map((file, index) => (
+              <div key={index} style={{ border: '1px solid #d4af37', padding: '10px', borderRadius: '5px' }}>
+                {file.type.startsWith('image/') ? (
+                  <img src={file.url} alt={file.name} style={{ width: '150px', height: '150px', objectFit: 'cover' }} />
+                ) : (
+                  <div style={{ width: '150px', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#222' }}>
+                    📄 {file.name}
+                  </div>
+                )}
+                <p style={{ fontSize: '12px', maxWidth: '150px', textOverflow: 'ellipsis', overflow: 'hidden' }}>{file.name}</p>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
