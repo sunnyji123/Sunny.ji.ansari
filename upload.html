@@ -1,0 +1,21 @@
+<div style="padding: 20px; background-color: #0f172a; color: #fff; border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 12px; max-width: 700px; margin: 30px auto; text-align: center;">
+  <h3 style="color: #d4af37;">Upload Property Documents / Images</h3>
+  
+  <!-- File Select Karne Ka Input Button -->
+  <input 
+    type="file" 
+    id="fileInput" 
+    multiple 
+    style="margin: 15px 0; color: #fff; cursor: pointer;"
+  />
+
+  <!-- Uploaded Files Preview Section (Jahan photos instantly show hongi) -->
+  <div style="margin-top: 20px;">
+    <h4 style="color: #d4af37; text-align: left; border-bottom: 1px solid rgba(212, 175, 55, 0.3); padding-bottom: 10px;">Uploaded Files Preview:</h4>
+    
+    <div id="previewContainer" style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; margin-top: 15px;">
+        <!-- Photos aur files upload hone ke baad JavaScript ke zariye yahan dikhengi -->
+        <p id="noFilesText" style="color: #cbd5e1;">No files uploaded yet.</p>
+    </div>
+  </div>
+</div>
