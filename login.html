@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Login | Sunny Ji Ansari</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">Sunny Ji Ansari</div>
+        <nav><a href="index.html">← Back to Home</a></nav>
+    </header>
+
+    <section class="portal-container" style="max-width: 450px;">
+        <h3>Portal Secure Login</h3>
+        <form onsubmit="checkLogin(event)">
+            <div class="form-group">
+                <label>Username / Email</label>
+                <input type="text" id="username" required>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="password" required>
+            </div>
+            <button type="submit" class="submit-btn">Login to Dashboard</button>
+        </form>
+        <p id="error" style="color:red; text-align:center; margin-top:10px;"></p>
+    </section>
+
+    <script>
+        function checkLogin(e) {
+            e.preventDefault();
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+            
+            // Demo configurations for admin
+            if(user === "admin" && pass === "ansari123") {
+                window.location.href = "admin.html";
+            } else {
+                document.getElementById('error').innerText = "Invalid credentials. Try username: admin / pass: ansari123";
+            }
+        }
+    </script>
+</body>
+</html>
