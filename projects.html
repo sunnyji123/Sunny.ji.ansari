@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects & Inventory | Sunny Ji Ansari</title>
+    <style>
+        /* Premium Luxury Black & Gold Theme */
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #0b111e; color: #ffffff; padding: 15px; min-height: 100vh; }
+        
+        /* Header & Navigation Styling */
+        header { text-align: center; margin-bottom: 25px; padding-top: 10px; }
+        .logo { font-size: 2.2rem; font-weight: bold; color: #e5b842; margin-bottom: 15px; letter-spacing: 1px; text-transform: uppercase; }
+        nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; border-bottom: 2px solid #e5b842; padding-bottom: 15px; }
+        nav a { color: #ffffff; text-decoration: none; font-size: 1.1rem; font-weight: 500; padding: 5px 10px; cursor: pointer; transition: color 0.3s; }
+        nav a.active, nav a:hover { color: #e5b842; }
+
+        /* Container & Titles */
+        .portal-container { max-width: 800px; margin: 0 auto; padding: 10px; }
+        h3 { color: #e5b842; font-size: 1.4rem; margin-bottom: 20px; font-weight: 600; text-align: center; border-left: 4px solid #e5b842; padding-left: 10px; }
+        
+        /* Search Bar */
+        .search-box { margin-bottom: 25px; width: 100%; padding: 14px; background: #121926; border: 1px solid #e5b842; color: white; border-radius: 8px; font-size: 1rem; outline: none; }
+        .search-box::placeholder { color: #55657e; }
+        
+        /* Inventory Grid & Cards */
+        .grid { display: flex; flex-direction: column; gap: 20px; }
+        .card { background: #121926; border: 1px solid #1c2638; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; border-bottom: 3px solid #1c2638; transition: border-color 0.3s; }
+        .card:hover { border-color: #e5b842; }
+        
+        /* Image Section inside Card */
+        .card-img-container { width: 100%; height: 220px; background-color: #0b111e; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; border-bottom: 1px solid #1c2638; }
+        .card-img { width: 100%; height: 100%; object-fit: cover; }
+        .no-img-text { color: #55657e; font-size: 0.9rem; font-style: italic; }
+        
+        /* Card Body & Details */
+        .card-body { padding: 20px; display: flex; justify-content: space-between; align-items: center; gap: 15px; }
+        .card-details { flex: 1; }
+        .card-title { color: #fff; margin-bottom: 8px; font-size: 1.2rem; font-weight: 600; }
+        .card-meta { color: #8ca0ba; font-size: 0.9rem; }
+        
+        /* Gold Interactive Action Buttons */
+        .badge-btn { background: #e5b842; color: #0b111e; padding: 12px 20px; border-radius: 8px; font-weight: bold; font-size: 0.95rem; text-align: center; text-decoration: none; border: none; cursor: pointer; transition: background 0.3s, transform 0.1s; min-width: 120px; display: inline-block; }
+        .badge-btn:hover { background: #fff; color: #0b111e; transform: translateY(-2px); }
+
+        /* Picture Upload Form Section */
+        .upload-section { background: #121926; border: 1px solid #e5b842; padding: 20px; border-radius: 12px; margin-bottom: 30px; }
+        .upload-section h4 { color: #e5b842; margin-bottom: 15px; font-size: 1.2rem; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; color: #8ca0ba; margin-bottom: 5px; font-size: 0.9rem; }
+        .form-control { width: 100%; padding: 10px; background: #0b111e; border: 1px solid #1c2638; color: white; border-radius: 6px; font-size: 1rem; outline: none; }
+        .form-control:focus { border-color: #e5b842; }
+        .upload-btn { background: transparent; color: #e5b842; border: 2px solid #e5b842; width: 100%; padding: 12px; font-weight: bold; border-radius: 8px; cursor: pointer; transition: 0.3s; font-size: 1rem; }
+        .upload-btn:hover { background: #e5b842; color: #0b111e; }
+
+        /* Mobile Optimization */
+        @media (max-width: 600px) {
+            .card-body { flex-direction: column; align-items: flex-start; gap: 15px; }
+            .badge-btn { width: 100%; }
+            nav { gap: 10px; }
+            nav a { font-size: 0.95rem; padding: 5px; }
+            .logo { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Sunny Ji Ansari</div>
+        <nav>
+            <a onclick="switchTab('projects')" id="nav-projects" class="active">Projects / Inventory</a>
+            <a onclick="switchTab('upload')" id="nav-upload">Upload Picture & Add Plot</a>
+        </nav>
+    </header>
+
+    <div class="portal-container">
+        
+        <!-- 1. VIEW INVENTORY TAB -->
+        <div id="projectsTab">
+            <h3>Pakistan - Live Inventory Portal</h3>
+            <input type="text" id="searchBar" class="search-box" placeholder="Search plot size, category, location or status..." onkeyup="searchInventory()">
+            
+            <div class="grid" id="inventoryGrid">
+                <!-- Data dynamically loads here -->
+            </div>
+        </div>
+
+        <!-- 2. UPLOAD/ADD NEW PLOT FORM TAB -->
+        <div id="uploadTab" style="display: none;">
+            <div class="upload-section">
+                <h4>Naya Plot Add Karein aur Picture Upload Karein</h4>
+                
+                <div class="form-group">
+                    <label>Plot Name / Title</label>
+                    <input type="text" id="plotTitle" class="form-control" placeholder="e.g., 120 Sq Yards Residential Plot">
+                </div>
+                
+                <div class="form-group">
+                    <label>Location</label>
+                    <input type="text" id="plotLocation" class="form-control" placeholder="e.g., Dhabeji Market">
+                </div>
+                
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="plotType" class="form-control">
+                        <option value="residential">Residential</option>
+                        <option value="commercial">Commercial</option>
+                        <option value="houses">Luxury Houses</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Button Status Text</label>
+                    <input type="text" id="plotStatus" class="form-control" placeholder="e.g., Available, Open, Premium Booking">
+                </div>
+                
+                <div class="form-group">
+                    <label>Select Plot Image / Picture</label>
+                    <input type="file" id="plotImage" class="form-control" accept="image/*">
+                </div>
+                
+                <button class="upload-btn" onclick="addNewPlot()">Save Plot & Upload Image</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // LocalStorage se data load karega, agar empty hoga toh default items show karega
+        // 80 Sq Yards ko badal kar 120 Sq Yards kar diya gaya hai.
+        let inventory = JSON.parse(localStorage.getItem('sunny_inventory')) || [
+            { 
+                title: "120 Sq Yards Residential Plot", 
+                type: "residential", 
+                location: "Dhabeji Market", 
+                status: "Available",
+                image: "" 
+            },
+            { 
+                title: "Booking File Submission Form", 
+                type: "residential", 
+                location: "Main Office Counter", 
+                status: "Open",
+                image: "" 
+            }
+        ];
+
+        // Tabs badalne ke liye function (Projects ya Upload Form)
+        function switchTab(tab) {
+            if(tab === 'projects') {
+                document.getElementById('projectsTab').style.display = 'block';
+                document.getElementById('uploadTab').style.display = 'none';
+                document.getElementById('nav-projects').classList.add('active');
+                document.getElementById('nav-upload').classList.remove('active');
+                displayInventory(inventory);
+            } else {
+                document.getElementById('projectsTab').style.display = 'none';
+                document.getElementById('uploadTab').style.display = 'block';
+                document.getElementById('nav-projects').classList.remove('active');
+                document.getElementById('nav-upload').classList.add('active');
+            }
+        }
+
+        // Inventory Display karne ka Main logic
+        function displayInventory(data) {
+            const grid = document.getElementById('inventoryGrid');
+            grid.innerHTML = "";
+            
+            if(data.length === 0) {
+                grid.innerHTML = `<p style="color: #55657e; text-align: center; padding: 30px;">No matching properties found.</p>`;
+                return;
+            }
+
+            data.forEach((item) => {
+                const whatsappNumber = "923363144097"; 
+                const message = encodeURIComponent(`Hi Sunny Ji Ansari, I am interested in: ${item.title} at ${item.location}. Is it still ${item.status}?`);
+                const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+
+                let imageHtml = `<div class="no-img-text">📷 No Image Uploaded</div>`;
+                if(item.image) {
+                    imageHtml = `<img src="${item.image}" class="card-img" alt="Plot Image">`;
+                }
+
+                grid.innerHTML += `
+                    <div class="card">
+                        <div class="card-img-container">
+                            ${imageHtml}
+                        </div>
+                        <div class="card-body">
+                            <div class="card-details">
+                                <h4 class="card-title">${item.title}</h4>
+                                <p class="card-meta">📍 ${item.location} | <span style="color:#e5b842;">${item.type.toUpperCase()}</span></p>
+                            </div>
+                            <a href="${whatsappUrl}" target="_blank" class="badge-btn">
+                                ${item.status}
+                            </a>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        // Real-time live filtering / search box function
+        function searchInventory() {
+            const val = document.getElementById('searchBar').value.toLowerCase();
+            const filtered = inventory.filter(i => 
+                i.title.toLowerCase().includes(val) || 
+                i.type.toLowerCase().includes(val) || 
+                i.status.toLowerCase().includes(val) ||
+                i.location.toLowerCase().includes(val)
+            );
+            displayInventory(filtered);
+        }
+
+        // Naya plot aur picture read karne ka logic
+        function addNewPlot() {
+            const title = document.getElementById('plotTitle').value.trim();
+            const location = document.getElementById('plotLocation').value.trim();
+            const type = document.getElementById('plotType').value;
+            const status = document.getElementById('plotStatus').value.trim();
+            const imageFile = document.getElementById('plotImage').files[0];
+
+            if(!title || !location || !status) {
+                alert("Kindly saare khali boxes ko fill karein!");
+                return;
+            }
+
+            const newPlot = {
+                title: title,
+                location: location,
+                type: type,
+                status: status,
+                image: ""
+            };
+
+            if(imageFile) {
+                const reader = new FileReader();
+                reader.onloadend = function() {
+                    newPlot.image = reader.result;
+                    inventory.unshift(newPlot);
+                    saveAndRefresh();
+                }
+                reader.readAsDataURL(imageFile);
+            } else {
+                inventory.unshift(newPlot);
+                saveAndRefresh();
+            }
+        }
+
+        function saveAndRefresh() {
+            localStorage.setItem('sunny_inventory', JSON.stringify(inventory));
+            
+            document.getElementById('plotTitle').value = "";
+            document.getElementById('plotLocation').value = "";
+            document.getElementById('plotStatus').value = "";
+            document.getElementById('plotImage').value = "";
+            
+            alert("Plot aur Picture successfully upload aur save ho chuki hain!");
+            switchTab('projects');
+        }
+
+        // Initial setup run
+        displayInventory(inventory);
+    </script>
+</body>
+</html>
