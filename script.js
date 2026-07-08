@@ -90,4 +90,54 @@
             });
         });
     }
+});// === HARD-CODED FILE UPLOAD PREVIEW LOGIC ===
+document.addEventListener("DOMContentLoaded", () => {
+    const fileInput = document.getElementById("fileInput");
+    const previewContainer = document.getElementById("previewContainer");
+    const noFilesText = document.getElementById("noFilesText");
+
+    if (fileInput && previewContainer) {
+        fileInput.addEventListener("change", function(event) {
+            const files = event.target.files;
+            
+            // Agar koi file select hui hai to "No files uploaded yet" waala text hata do
+            if (files.length > 0 && noFilesText) {
+                noFilesText.style.display = 'none';
+            }
+
+            Array.from(files).forEach(file => {
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    const fileCard = document.createElement("div");
+                    fileCard.style.cssText = "border: 1px solid #d4af37; padding: 10px; border-radius: 5px; background: #1e293b; color: #fff; text-align: center; width: 150px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);";
+
+                    // Agar image hai toh image card banao
+                    if (file.type.startsWith("image/")) {
+                        const img = document.createElement("img");
+                        img.src = e.target.result;
+                        img.style.cssText = "width: 130px; height: 130px; object-fit: cover; display: block; margin: 0 auto 8px; border-radius: 4px;";
+                        fileCard.appendChild(img);
+                    } else {
+                        // Agar koi doc ya pdf hai toh icon dikhao
+                        const docIcon = document.createElement("div");
+                        docIcon.innerText = "📄";
+                        docIcon.style.cssText = "font-size: 50px; margin-bottom: 8px;";
+                        fileCard.appendChild(docIcon);
+                    }
+
+                    // File ka naam short karke dikhane ke liye
+                    const fileName = document.createElement("p");
+                    fileName.innerText = file.name;
+                    fileName.style.cssText = "font-size: 12px; max-width: 130px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin: 0; color: #cbd5e1;";
+                    
+                    fileCard.appendChild(fileName);
+                    previewContainer.appendChild(fileCard);
+                };
+
+                // File data read karne ke liye taaki Vercel server par issue na aaye
+                reader.readAsDataURL(file);
+            });
+        });
+    }
 });
