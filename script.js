@@ -141,3 +141,51 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+// === FILE UPLOAD AND INSTANT PREVIEW CODE ===
+document.addEventListener("DOMContentLoaded", () => {
+    const fileInput = document.getElementById("fileInput");
+    const previewContainer = document.getElementById("previewContainer");
+
+    if (fileInput && previewContainer) {
+        fileInput.addEventListener("change", function(event) {
+            const files = event.target.files;
+            
+            // Har baar naye upload par purani previews clear karne ke liye (agar chahiye ho)
+            previewContainer.innerHTML = ''; 
+
+            Array.from(files).forEach(file => {
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    const fileCard = document.createElement("div");
+                    fileCard.style.cssText = "border: 1px solid #d4af37; padding: 10px; margin: 10px; border-radius: 8px; display: inline-block; background: rgba(30, 41, 59, 0.8); color: #fff; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.2);";
+
+                    // Agar select ki gayi file image hai to photo dikhao
+                    if (file.type.startsWith("image/")) {
+                        const img = document.createElement("img");
+                        img.src = e.target.result;
+                        img.style.cssText = "width: 140px; height: 140px; object-fit: cover; display: block; margin-bottom: 8px; border-radius: 4px;";
+                        fileCard.appendChild(img);
+                    } else {
+                        // Agar PDF ya koi aur document hai to icon dikhao
+                        const docIcon = document.createElement("div");
+                        docIcon.innerText = "📄";
+                        docIcon.style.cssText = "font-size: 50px; margin-bottom: 8px;";
+                        fileCard.appendChild(docIcon);
+                    }
+
+                    // File ka naam niche chote aksharon mein dikhane ke liye
+                    const fileName = document.createElement("p");
+                    fileName.innerText = file.name;
+                    fileName.style.cssText = "font-size: 12px; max-width: 140px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin: 0; color: #cbd5e1;";
+                    
+                    fileCard.appendChild(fileName);
+                    previewContainer.appendChild(fileCard);
+                };
+
+                // File ko locally read karega jo Vercel par bina database ke bhi chalega
+                reader.readAsDataURL(file);
+            });
+        });
+    }
+});
